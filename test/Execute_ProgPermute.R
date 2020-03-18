@@ -4,7 +4,7 @@ rm(list=ls())
 
 library(devtools)
 install_github("LyonsZhang/ProgPermute")
-library(Progpermute)
+library(ProgPermute)
 ##set the working path
 setwd("/Users/lzhang27/Documents/ProgPermute/R")
 
