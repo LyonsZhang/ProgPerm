@@ -2,32 +2,36 @@
 closeAllConnections()
 rm(list=ls())
 
+library(devtools)
+install_github("LyonsZhang/ProgPermute")
+library(Progpermute)
 ##set the working path
 setwd("/Users/lzhang27/Documents/ProgPermute/R")
 
 ######binary variable
 
 ##load packages
-source("bin_true_initial.R")
-source("bin_multitest.R")
-source("bin_exchange.R")
-source("bin_permute_all.R")
-source("plot_bin_permute_all.R")
-source("bin_permute_best.R")
-source("plot_bin_permute_best.R")
-source("plot_bin_effectsize.R")
-source("dotplot_bin_sig.R")
-source("bin_progresscoverage.R")
-source("bin_fragility.R")
-source("bin_pv_distribution.R")
-source("bin_pv_dist_transit.R")
-source("plot_bin_permute_sigcurve.R")
-source("plot_bin_psig.R")
-source("plot_bin_es.R")
-source("plot_bin_pv.R")
+# source("bin_true_initial.R")
+# source("bin_multitest.R")
+# source("bin_exchange.R")
+# source("bin_permute_all.R")
+# source("plot_bin_permute_all.R")
+# source("bin_permute_best.R")
+# source("plot_bin_permute_best.R")
+# source("plot_bin_effectsize.R")
+# source("dotplot_bin_sig.R")
+# source("bin_progresscoverage.R")
+# source("bin_fragility.R")
+# source("bin_pv_distribution.R")
+# source("bin_pv_dist_transit.R")
+# source("plot_bin_permute_sigcurve.R")
+# source("plot_bin_psig.R")
+# source("plot_bin_es.R")
+# source("plot_bin_pv.R")
 
 ##read data
-testdata1<-read.csv("locationmicro.csv",header=T)
+data(testdata1)
+data(testdata2)
 
 results<-bin_permute_all(variable="variable",testdata=testdata1,top_pm=267,zoomn=15,alpha=0.05)
 
@@ -63,24 +67,22 @@ plot_bin_effectsize(bestoutputs=best,variable="variable",testdata=testdata1,esti
 
 
 ###load packages
-source("con_true_initial.R")
-source("con_multitest.R")
-source("con_exchange.R")
-source("con_permute_all.R")
-source("plot_con_permute_all.R")
-source("con_permute_best.R")
-source("plot_con_permute_best.R")
-source("plot_con_effectsize.R")
-source("scatterplot_con_sig.R")
-source("bin_progresscoverage.R")
-source("con_progresscoverage.R")
-source("con_fragility.R")
-source("con_pv_distribution.R")
-source("con_pv_dist_transit.R")
-source("plot_con_permute_sigcurve.R")
+# source("con_true_initial.R")
+# source("con_multitest.R")
+# source("con_exchange.R")
+# source("con_permute_all.R")
+# source("plot_con_permute_all.R")
+# source("con_permute_best.R")
+# source("plot_con_permute_best.R")
+# source("plot_con_effectsize.R")
+# source("scatterplot_con_sig.R")
+# source("bin_progresscoverage.R")
+# source("con_progresscoverage.R")
+# source("con_fragility.R")
+# source("con_pv_distribution.R")
+# source("con_pv_dist_transit.R")
+# source("plot_con_permute_sigcurve.R")
 
-##read data
-testdata2<-read.csv("taxtablefull.csv",header=T)
 
 results<-con_permute_all(variable="variable",testdata=testdata2,top_pm=841,zoomn=15,method="kendall",alpha=0.05)
 
