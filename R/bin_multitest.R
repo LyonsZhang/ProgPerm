@@ -1,0 +1,32 @@
+bin_multitest<-function(i,k,variable,select,testdata,testlevel,levs,position0,position1,method,psigalpha=0.05)
+{
+  group<-testdata[[variable]]
+  n1<-length(position0)
+  n2<-length(position1)
+  group[sample(position0,k)]<-levs[2]
+  group[sample(position1,k)]<-levs[1]
+  group<-factor(group)
+  if(method=="kruskal")
+  {
+    otu.test<-apply(testlevel,2,function(x){
+      kt<-kruskal.test(x=x,g=group)
+      return(data.frame(pv=kt$p.value,es=kt$statistic/sqrt(n1^2+n2^2)))
+    })
+    otu.test<-do.call(rbind,otu.test)
+  }
+  else if(method=="wilcox")
+  {
+    otu.test<-apply(testlevel,2,function(x){
+      wt<-wilcox.test(x~group)
+      return(data.frame(pv=wt$p.value,es=wt$statistic/sqrt(n1^2+n2^2)))
+    })
+    otu.test<-do.call(rbind,otu.test)
+  }
+  #pvalue[,i]<-sort(otu.mk$pv)[1:10]
+  psig<-sum(! otu.test$pv>psigalpha,na.rm=T)
+  pvalue<--log10(otu.test$pv[select])
+  #effectsize<-otu.test$es-median(otu.test$es)
+  effectsize<-otu.test$es
+  effectsize<-effectsize[select]
+  return(list(psig=psig,pvalue=pvalue,effectsize=effectsize))
+}
