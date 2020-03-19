@@ -7,11 +7,11 @@ Progressive permutation for a dynamic representation of the robustness of microb
 
 2. Run the following codes:
 
-   library(devtools)
+   >library(devtools)
    
-   install_github("LyonsZhang/ProgPermute")
+   >install_github("LyonsZhang/ProgPermute")
    
-   library(ProgPermute)
+   >library(ProgPermute)
    
 3. Run the example codes in "Exucute_ProgPermute.R" in the test folder.
 
