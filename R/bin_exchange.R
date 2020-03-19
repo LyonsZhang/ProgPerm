@@ -1,4 +1,4 @@
-####purmutation function
+####permutation function
 bin_exchange<-function(k,top_pm,n,zoomn,variable,select,selname,testdata,testlevel,levs,position0,position1,alpha,psigalpha,method,test_fun=bin_multitest,paral)
 {
   #psig<-rep(0,(n-abs(k-n))*zoomn+1)
