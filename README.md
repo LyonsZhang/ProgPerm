@@ -35,9 +35,6 @@ library(ProgPermute)
 ```
 3. Run the example codes in "Exucute_ProgPermute.R" in the test folder.
 
-#
-If you have any questions, please contact me at liangliangzhang.stat@gmail.com
-
 ## Example
 
 ### Binary outcome
@@ -50,23 +47,31 @@ rm(list=ls())
 ```R
 data(testdata1)
 ```
-
+>run progressive permutation
+```R
 results<-bin_permute_all(variable="variable",testdata=testdata1,top_pm=267,zoomn=15,alpha=0.05)
-
-####Overall association
-sigloc<-plot_bin_psig(alloutputs=results,psigtitle=NULL,psigyrange=c(0,170),savepsigfile ="location_sigfeatures.eps", psigpicdim=c(10,7))
-
+```
+>show number of significant features
+```R
+sigloc<-plot_bin_psig(alloutputs=results,psigtitle=NULL,psigyrange=c(0,170),savepsigfile ="sigfeatures.eps", psigpicdim=c(10,7))
+```
+>show the traces of p-values
+```R
 pvloc<-plot_bin_pv(alloutputs=results,top_pm=267,pvtitle="",pvyrange=c(0,7),savepvfile ="location_pvfeatures.eps", pvpicdim=c(10,7))
-
+```
+pvloc<-plot_bin_pv(alloutputs=results,top_pm=267,pvtitle="",pvyrange=c(0,7),savepvfile ="location_pvfeatures.eps", pvpicdim=c(10,7))
 plot_bin_permute_all(alloutputs=results,top_pm=267,lgndcol=3,psigtitle=NULL,psigyrange=c(0,170),savepsigfile="bin_locationsigfeatures.eps",psigpicdim=c(10,7),pvtitle=NULL,pvyrange=c(0,7),savepvfile="locationPvalues.eps",pvpicdim=c(10,7),estitle=NULL,esyrange=c(0,1.5),saveesfile="locationeffectsize.eps",espicdim=c(10,7))
-
 sigsum<-plot_bin_permute_sigcurve(alloutputs=results,samsize=267,lgndcol=2,psigtitle=NULL,savepsigfile="bin_locationsigcurve.eps",psigpicdim=c(10,7))
+```
+
+
+intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
+fragility<-bin_fragility(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,yrange=c(0,7),pvtitle=NULL,savepvfile="locationPvfragility.eps",pvpicdim=c(15,7))
 
 intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
 coverage<-bin_progresscoverage(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,pvtitle=NULL,savepvfile="locationPvcoverage.eps",pvpicdim=c(15,7),estitle=NULL,saveesfile="locationeffectcoverage.eps",espicdim=c(15,7))
 
-intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
-fragility<-bin_fragility(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,yrange=c(0,7),pvtitle=NULL,savepvfile="locationPvfragility.eps",pvpicdim=c(15,7))
+
 
 bin_pv_distribution(alloutputs=results,lowindx=intres$n,folder="dist1",pvtitle=NULL,pvpicdim=c(7,7))
 
@@ -81,3 +86,5 @@ lapply(best$goodpvname,dotplot_bin_sig,variable="variable",testdata=testdata1,fo
 
 plot_bin_effectsize(bestoutputs=best,variable="variable",testdata=testdata1,estitle=NULL,saveesfile="location_signedeffectsize_plot.eps",espicdim=c(15,10))
 
+#
+If you have any questions, please contact me at liangliangzhang.stat@gmail.com
