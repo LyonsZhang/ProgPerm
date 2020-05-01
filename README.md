@@ -45,7 +45,7 @@ data(testdata1)
 setwd("/Users/lzhang27/Documents/ProgPermute/R")
 ```
 ### Analyze overall association
->run progressive permutation
+>run progressive permutation. "variable" denotes the name of binary outcome. "top_pm" must be less than the number of microbial features
 ```R
 results<-bin_permute_all(variable="variable",testdata=testdata1,top_pm=267,zoomn=15,alpha=0.05)
 ```
