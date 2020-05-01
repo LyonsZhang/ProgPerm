@@ -11,7 +11,7 @@ The proposed method progressively permutes the grouping factor labels of microbi
 <!--ts-->
 - [Installation](#installation)
 - [Example](#example)
-- [RShiny App](#rshiny_app)
+- [ShinyApp](#shiny_app)
 - [Contact](#contact)
 <!--te-->
 
@@ -95,7 +95,7 @@ plot_bin_effectsize(bestoutputs=best,variable="variable",testdata=testdata1,esti
 ```R
 lapply(best$goodpvname,dotplot_bin_sig,variable="variable",testdata=testdata1,folder="individual1")
 ```
-# RShiny App
+# ShinyApp
 You can access the App on https://biostatistics.mdanderson.org/shinyapps/ProgPerm
 # Contact
 If you have any questions, please contact me at liangliangzhang.stat@gmail.com
