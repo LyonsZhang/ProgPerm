@@ -26,7 +26,7 @@ library(devtools)
 install_github("LyonsZhang/ProgPermute")
 library(ProgPermute)
 ```
-3. Run the example codes in "Exucute_ProgPermute.R" in the test folder.
+3. Run the example codes in "Execute_ProgPermute.R" in the test folder https://github.com/LyonsZhang/ProgPermute/tree/master/test.
 
 # Example
 
