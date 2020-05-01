@@ -37,7 +37,7 @@ library(ProgPermute)
 
 ## Example
 
-### Binary outcome
+### I. Binary outcome
 >clear current session
 ```R
 closeAllConnections()
@@ -47,6 +47,7 @@ rm(list=ls())
 ```R
 data(testdata1)
 ```
+#### Analyze overall association
 >run progressive permutation
 ```R
 results<-bin_permute_all(variable="variable",testdata=testdata1,top_pm=267,zoomn=15,alpha=0.05)
@@ -68,24 +69,32 @@ sigsum<-plot_bin_permute_sigcurve(alloutputs=results,samsize=267,lgndcol=2,psigt
 intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
 fragility<-bin_fragility(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,yrange=c(0,7),pvtitle=NULL,savepvfile="locationPvfragility.eps",pvpicdim=c(15,7))
 ```
-
+>Calculate the progressive coverage
+```R
 intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
-coverage<-bin_progresscoverage(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,pvtitle=NULL,savepvfile="locationPvcoverage.eps",pvpicdim=c(15,7),estitle=NULL,saveesfile="locationeffectcoverage.eps",espicdim=c(15,7))
-
-
-
+coverage<-bin_progresscoverage(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,pvtitle=NULL,savepvfile="Pvcoverage.eps",pvpicdim=c(15,7),estitle=NULL,saveesfile="effectcoverage.eps",espicdim=c(15,7))
+```
+>Observe the distributions of Pvalues
+```R
 bin_pv_distribution(alloutputs=results,lowindx=intres$n,folder="dist1",pvtitle=NULL,pvpicdim=c(7,7))
-
 bin_pv_dist_transit(alloutputs=results,lowindx=intres$n,cutoff=0.05,folder="results1",pvtitle="",pvpicdim=c(7,7))
-
-##Identify best features
+```
+#### Identify the best features
+>run the full permutation
+```R
 best<-bin_permute_best(variable="variable",testdata=testdata1,top_pm=50,zoomn=100,alpha=0.05)
-
-cinfresults<-plot_bin_permute_best(bestoutputs=best,top_pm=50,pvtitle="Coverage plot",savepvfile="Race_pvalue_Coverageplot.eps",pvpicdim=c(15,10),estitle="Coverage plot",saveesfile="Race_effectsize_Coverageplot.eps",espicdim=c(15,10))
-
+```
+>Real hits lie outside of 95% quantile intervals of full permuted hits
+```R
+cinfresults<-plot_bin_permute_best(bestoutputs=best,top_pm=50,pvtitle="Coverage plot",savepvfile="pvalue_Coverageplot.eps",pvpicdim=c(15,10),estitle="Coverage plot",saveesfile="effectsize_Coverageplot.eps",espicdim=c(15,10))
+```
+>List the signed effect sizes of the discoveries
+```R
+plot_bin_effectsize(bestoutputs=best,variable="variable",testdata=testdata1,estitle=NULL,saveesfile="signedeffectsize_plot.eps",espicdim=c(15,10))
+```
+>Show the dot plot of each individual discovery
+```R
 lapply(best$goodpvname,dotplot_bin_sig,variable="variable",testdata=testdata1,folder="individual1")
-
-plot_bin_effectsize(bestoutputs=best,variable="variable",testdata=testdata1,estitle=NULL,saveesfile="location_signedeffectsize_plot.eps",espicdim=c(15,10))
-
+```
 #
 If you have any questions, please contact me at liangliangzhang.stat@gmail.com
