@@ -10,7 +10,7 @@ related codes are
 bin_exchange.R
 bin_permute_all.R
 plot_bin_permute_all.R
-bin_permute_worst.R
+bin_permute_best.R
 
 
 2. For continuous variable:
@@ -23,7 +23,7 @@ related codes are
 con_exchange.R
 con_permute_all.R
 plot_con_permute_all.R
-con_permute_worst.R
+con_permute_best.R
 
 
 ########################################
