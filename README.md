@@ -1,4 +1,5 @@
-![Image description](https://biostatistics.mdanderson.org/shinyapps/ProgPerm)
+<a href="https://biostatistics.mdanderson.org/shinyapps/ProgPerm"><img src="https://github.com/LyonsZhang/ProgPermute/blob/master/test/UCurve.png?raw=true" title="ProgPermute" alt="ProgPermute"></a>
+
 # ProgPermute
 > Progressive permutation for a dynamic representation of the robustness of microbiome discoveries
 
