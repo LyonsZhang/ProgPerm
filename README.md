@@ -6,21 +6,14 @@ The proposed method progressively permutes the grouping factor labels of microbi
 ---
 
 # Table of Contents
-=================
 <!--ts-->
 - [Installation](#installation)
 - [Example](#example)
-   * [Binary outcome](#binary_outcome)
-   * [Continuous outcome](#continuous_outcome)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
+- [RShiny App](#rshiny_app)
+- [Contact](#contact)
 <!--te-->
 
-## Installation
-============
+# Installation
 
 1. If you don't have "devtools" package, you need to download it by using 
 ```R
@@ -35,9 +28,9 @@ library(ProgPermute)
 ```
 3. Run the example codes in "Exucute_ProgPermute.R" in the test folder.
 
-## Example
+# Example
 
-### I. Binary outcome
+### Preparation
 >clear current session
 ```R
 closeAllConnections()
@@ -47,7 +40,11 @@ rm(list=ls())
 ```R
 data(testdata1)
 ```
-#### Analyze overall association
+>set the working path where the figures will be saved
+```R
+setwd("/Users/lzhang27/Documents/ProgPermute/R")
+```
+### Analyze overall association
 >run progressive permutation
 ```R
 results<-bin_permute_all(variable="variable",testdata=testdata1,top_pm=267,zoomn=15,alpha=0.05)
@@ -79,7 +76,7 @@ coverage<-bin_progresscoverage(alloutputs=results,lowindx=intres$n,top_pm=50,lgn
 bin_pv_distribution(alloutputs=results,lowindx=intres$n,folder="dist1",pvtitle=NULL,pvpicdim=c(7,7))
 bin_pv_dist_transit(alloutputs=results,lowindx=intres$n,cutoff=0.05,folder="results1",pvtitle="",pvpicdim=c(7,7))
 ```
-#### Identify the best features
+### Identify the best features
 >run the full permutation
 ```R
 best<-bin_permute_best(variable="variable",testdata=testdata1,top_pm=50,zoomn=100,alpha=0.05)
@@ -96,5 +93,7 @@ plot_bin_effectsize(bestoutputs=best,variable="variable",testdata=testdata1,esti
 ```R
 lapply(best$goodpvname,dotplot_bin_sig,variable="variable",testdata=testdata1,folder="individual1")
 ```
-#
+# RShiny App
+You can access the App on https://biostatistics.mdanderson.org/shinyapps/ProgPerm
+# Contact
 If you have any questions, please contact me at liangliangzhang.stat@gmail.com
