@@ -10,8 +10,8 @@ The proposed method progressively permutes the grouping factor labels of microbi
 <!--ts-->
 - [Installation](#installation)
 - [Example](#example)
-   - [Binary outcome](#binary_outcome)
-   - [Continuous outcome](#continuous_outcome)
+   * [Binary outcome](#binary_outcome)
+   * [Continuous outcome](#continuous_outcome)
 - [Contributing](#contributing)
 - [Team](#team)
 - [FAQ](#faq)
@@ -40,7 +40,7 @@ If you have any questions, please contact me at liangliangzhang.stat@gmail.com
 
 ## Example
 
-Binary outcome
+### Binary outcome
 >clear current session
 ```R
 closeAllConnections()
