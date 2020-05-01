@@ -51,22 +51,23 @@ data(testdata1)
 ```R
 results<-bin_permute_all(variable="variable",testdata=testdata1,top_pm=267,zoomn=15,alpha=0.05)
 ```
->show number of significant features
+>show U-Curve of number of significant features
 ```R
 sigloc<-plot_bin_psig(alloutputs=results,psigtitle=NULL,psigyrange=c(0,170),savepsigfile ="sigfeatures.eps", psigpicdim=c(10,7))
 ```
->show the traces of p-values
+>show the traces of Pvalues
 ```R
-pvloc<-plot_bin_pv(alloutputs=results,top_pm=267,pvtitle="",pvyrange=c(0,7),savepvfile ="location_pvfeatures.eps", pvpicdim=c(10,7))
+pvloc<-plot_bin_pv(alloutputs=results,top_pm=267,pvtitle="",pvyrange=c(0,7),savepvfile ="pvfeatures.eps", pvpicdim=c(10,7))
 ```
-pvloc<-plot_bin_pv(alloutputs=results,top_pm=267,pvtitle="",pvyrange=c(0,7),savepvfile ="location_pvfeatures.eps", pvpicdim=c(10,7))
-plot_bin_permute_all(alloutputs=results,top_pm=267,lgndcol=3,psigtitle=NULL,psigyrange=c(0,170),savepsigfile="bin_locationsigfeatures.eps",psigpicdim=c(10,7),pvtitle=NULL,pvyrange=c(0,7),savepvfile="locationPvalues.eps",pvpicdim=c(10,7),estitle=NULL,esyrange=c(0,1.5),saveesfile="locationeffectsize.eps",espicdim=c(10,7))
-sigsum<-plot_bin_permute_sigcurve(alloutputs=results,samsize=267,lgndcol=2,psigtitle=NULL,savepsigfile="bin_locationsigcurve.eps",psigpicdim=c(10,7))
+>show the scaled U-Curve
+```R
+sigsum<-plot_bin_permute_sigcurve(alloutputs=results,samsize=267,lgndcol=2,psigtitle=NULL,savepsigfile="bin_sigcurve.eps",psigpicdim=c(10,7))
 ```
-
-
+>Calculate Fragility Index
+```R
 intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
 fragility<-bin_fragility(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,yrange=c(0,7),pvtitle=NULL,savepvfile="locationPvfragility.eps",pvpicdim=c(15,7))
+```
 
 intres<-bin_true_initial(variable="variable",testdata=testdata1,top_pm=267)
 coverage<-bin_progresscoverage(alloutputs=results,lowindx=intres$n,top_pm=50,lgndcol=2,pvtitle=NULL,savepvfile="locationPvcoverage.eps",pvpicdim=c(15,7),estitle=NULL,saveesfile="locationeffectcoverage.eps",espicdim=c(15,7))
