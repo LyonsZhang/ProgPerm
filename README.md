@@ -1,6 +1,6 @@
 <a href="https://biostatistics.mdanderson.org/shinyapps/ProgPerm"><img src="https://github.com/LyonsZhang/ProgPermute/blob/master/test/UCurve.png?raw=true" title="ProgPermute" alt="ProgPermute"></a>
 
-# ProgPermute
+# ProgPerm
 > Progressive permutation for a dynamic representation of the robustness of microbiome discoveries
 
 The proposed method progressively permutes the grouping factor labels of microbiome and performs multiple differential abundance tests in each scenario. We compare the signal strength of top hits from the original data with their performance in permutations, and will observe an apparent decreasing trend if these top hits are true positives identified from the data. The method can evaluate the overall association between microbiome and the grouping factor, rank the robustness of the discovered microbes, and list the discoveries, their effect sizes, and individual abundances.
